@@ -5883,3 +5883,24 @@ File: scss
     text-align: center;
     margin-top: 10px;
     overflow: hidden; } }
+
+
+
+
+/* ---------- Ocultar iconos de campos de texto ------------ */
+
+/* For Firefox */
+
+input[type='number'] {
+  -moz-appearance:textfield;
+}
+
+
+
+/* Webkit browsers like Safari and Chrome */
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
