@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { CommonModule } from '@angular/common';
 
 //Data binding
 import { FormsModule } from '@angular/forms'
@@ -17,10 +18,14 @@ import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.co
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 //Temporal
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
+
+// Pipes
+import { PipesModule } from '../pipes/pipes.module';
 
 
 @NgModule({
@@ -33,19 +38,23 @@ import { IncrementadorComponent } from '../components/incrementador/incrementado
         GraficoDonaComponent,
         AccountSettingsComponent,
         PromesasComponent,
-        RxjsComponent
+        RxjsComponent,
+        ProfileComponent
     ],
     exports:[
         DashboardComponent,
         ProgressComponent,
         Graficas1Component,
-        PagesComponent
+        PagesComponent,
+        PipesModule
     ],
     imports: [
         SharedModule,
         PAGES_ROUTES,
         FormsModule,
-        ChartsModule
+        ChartsModule,
+        PipesModule,
+        CommonModule
     ]
 })
 

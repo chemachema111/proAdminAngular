@@ -6,6 +6,7 @@ import { APP_ROUTES } from './app-routing.module';
 
 //Modulos
 import { PagesModule } from './pages/pages.module';
+import { PipesModule } from './pipes/pipes.module';
 
 //Temporal
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -31,7 +32,8 @@ import { RegisterComponent } from './register/register.component';
     PagesModule,
     FormsModule,
     ReactiveFormsModule,
-    ServiceModule
+    ServiceModule,
+    PipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

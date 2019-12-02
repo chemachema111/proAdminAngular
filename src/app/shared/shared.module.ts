@@ -8,12 +8,16 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { BreadcrumsComponent } from './breadcrums/breadcrums.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 
+// Modules
+import { PipesModule } from '../pipes/pipes.module';
+
 
 
 @NgModule({
     imports:[
         RouterModule,
-        CommonModule
+        CommonModule,
+        PipesModule
     ],
     declarations:[
         HeaderComponent,
