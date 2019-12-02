@@ -12,6 +12,9 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 // Guards
 import { LoginGuardGuard } from '../services/guards/login-guard.guard';
 import { ProfileComponent } from './profile/profile.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { MedicosComponent } from './medicos/medicos.component';
+import { HospitalesComponent } from './hospitales/hospitales.component';
 
 
 
@@ -28,6 +31,11 @@ const pageRoutes: Routes = [
         {path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },
         {path: 'accountSettings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del tema' } },
         {path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de usuario' } },
+
+        // Mantenimientos
+        {path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Gestión de usuario' } },
+        {path: 'medicos', component: MedicosComponent, data: { titulo: 'Gestión de medicos' } },
+        {path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Gestión de hospitales' } },
         {path: '', redirectTo: '/dashboard', pathMatch: 'full'}
       ]
     }

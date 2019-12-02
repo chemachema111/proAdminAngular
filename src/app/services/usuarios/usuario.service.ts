@@ -108,12 +108,15 @@ export class UsuarioService {
   actualizarUsuario( usuario: Usuario ){
     let url = this.url + '/usuario/' + usuario._id;
     url += '?token=' + this.token;
-    console.log(url);
 
     return this.http.put( url, usuario ).pipe(
       map( (resp: any) => {
+
+        if( usuario._id === this.usuario._id ){
+          this.guardarStorage( resp.usuario._id, this.token, resp.usuario );
+        }
         swal('Éxito', 'Usuario ' + usuario.nombre  + ' actualizado correctamente', 'success');
-        this.guardarStorage( resp.usuario._id, this.token, resp.usuario );
+
         return resp;
       })
     );
@@ -131,4 +134,22 @@ export class UsuarioService {
       });
 
   }
+
+  cargarUsuarios(desde: number = 0){
+    let url = URL_SERVICES + '/usuario?desde=' + desde;
+    return this.http.get( url );
+  }
+
+  buscarUsuarios( term: string){
+    let url = URL_SERVICES + '/busqueda/coleccion/usuarios/' + term;
+    return this.http.get( url ).pipe(
+      map( (resp: any) => resp.usuarios)
+    );
+  }
+
+  borrarUsuario( id: string ){
+    let url = URL_SERVICES + '/usuario/' + id + '?token=' + this.token;
+    return this.http.delete( url );
+  }
+
 }
