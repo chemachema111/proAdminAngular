@@ -28,6 +28,7 @@ import { IncrementadorComponent } from '../components/incrementador/incrementado
 
 // Pipes
 import { PipesModule } from '../pipes/pipes.module';
+import { MedicoComponent } from './medicos/medico.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { PipesModule } from '../pipes/pipes.module';
         UsuariosComponent,
         MedicosComponent,
         HospitalesComponent,
-        ModalUploadComponent
+        ModalUploadComponent,
+        MedicoComponent
     ],
     exports:[
         DashboardComponent,

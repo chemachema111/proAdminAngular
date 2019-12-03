@@ -1,3 +1,91 @@
-<p>
-  medicos works!
-</p>
+<div class="row animated fadeIn">
+
+    <div class="col-12">
+        <div class="card">
+          
+          <div class="card-body">
+            <div class="form-group">
+              <label for="busqueda">Busqueda</label>
+              <input #termInput type="text" (keyup)="buscarMedicos( termInput.value )"
+                class="form-control" name="busqueda" id="busqueda" aria-describedby="busquedaId" placeholder="Buscar">
+              <small id="busquedaId" class="form-text text-muted">Busca lo que necesites</small>
+            </div>
+          </div>
+      
+        </div>
+    </div>
+  
+  </div>
+    
+  <div class="row animated fadeIn" *ngIf="cargando">
+      <div class="col-12 text-center">
+          <div class="alert alert-warning" role="alert">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere por favor</span>
+          </div>
+      </div>
+  </div>
+  
+  <div class="row animated fadeIn" *ngIf="!cargando">
+      <div class="col-12">
+  
+          <div class="card">
+            
+            <div class="card-header">
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                      <h3 class="card-title">Medicos registrados <span class="badge badge-primary">{{ totalRegistros }}</span></h3>
+                  </div>
+                  <div class="col-12 col-md-6 text-right">
+                    <button [routerLink]="['/medico', 'nuevo']" type="button" class="btn btn-outline-primary badge-pill">Nuevo médico</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="card-body">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Imágen</th>
+                    <th>Nombre</th>
+                    <th>Hospital</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let med of medicos">
+                    <td>
+                      <div class="col-12 thumb-users-wrapper">
+                          <img [src]="med.img | imagen:'medicos'" class="thumb-users pointer" (click)="mostrarModal( med._id )" alt="Perfil de {{ med.nombre }}">
+                      </div>
+                        
+                    </td>
+                    <td>
+                        <p>{{med.nombre}}</p>
+                    </td>
+                    <td>
+                        <p *ngIf="med.hospital">{{med.hospital.nombre}}</p>
+                    </td>
+                    <td>
+                      <button [routerLink]="['/medico', med._id]" type="button" name="save" id="save" class="btn btn-primary"><i class="fa fa-save"></i></button>
+                      &nbsp;
+                      <button (click)="borrarMedico(med)" type="button" name="remove" id="remove" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+  
+              <button (click)="cambiarDesde(-5)" type="button" class="btn btn-secondary">Anteriores</button>
+              <button (click)="cambiarDesde(5)" type="button" class="btn btn-secondary">Siguientes</button>
+  
+            </div>
+  
+          </div>
+        
+      </div>
+    </div>

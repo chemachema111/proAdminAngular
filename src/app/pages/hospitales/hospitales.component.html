@@ -1,3 +1,87 @@
-<p>
-  hospitales works!
-</p>
+<div class="row animated fadeIn">
+
+  <div class="col-12">
+      <div class="card">
+        
+        <div class="card-body">
+          <div class="form-group">
+            <label for="busqueda">Busqueda</label>
+            <input #termInput type="text" (keyup)="buscarHospitales( termInput.value )"
+              class="form-control" name="busqueda" id="busqueda" aria-describedby="busquedaId" placeholder="Buscar">
+            <small id="busquedaId" class="form-text text-muted">Busca lo que necesites</small>
+          </div>
+        </div>
+    
+      </div>
+  </div>
+
+</div>
+  
+<div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-12 text-center">
+        <div class="alert alert-warning" role="alert">
+          <strong>Cargando</strong>
+          <br>
+          <i class="fa fa-refresh fa-spin fa-2x"></i>
+          <br>
+          <span>Espere por favor</span>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+
+        <div class="card">
+          
+          <div class="card-header">
+            <div class="col-12">
+              <div class="row">
+                <div class="col-12 col-md-6">
+                    <h3 class="card-title">Hospitales registrados <span class="badge badge-primary">{{ totalRegistros }}</span></h3>
+                </div>
+                <div class="col-12 col-md-6 text-right">
+                  <button (click)="crearHospital()" type="button" class="btn btn-outline-primary badge-pill">Nuevo hospital</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Imágen</th>
+                  <th>Nombre</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let hosp of hospitales">
+                  <td>
+                    <div class="col-12 thumb-users-wrapper">
+                        <img [src]="hosp.img | imagen:'hospitales'" class="thumb-users pointer" (click)="mostrarModal( hosp._id )" alt="Perfil de {{ hosp.nombre }}">
+                    </div>
+                      
+                  </td>
+                  <td>
+                      <input [(ngModel)]="hosp.nombre" type="text" class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="Nombre">
+                  </td>
+                  <td>
+                    <button (click)="guardarHospital(hosp)" type="button" name="save" id="save" class="btn btn-primary"><i class="fa fa-save"></i></button>
+                    &nbsp;
+                    <button (click)="borrarHospital(hosp)" type="button" name="remove" id="remove" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <button (click)="cambiarDesde(-5)" type="button" class="btn btn-secondary">Anteriores</button>
+            <button (click)="cambiarDesde(5)" type="button" class="btn btn-secondary">Siguientes</button>
+
+          </div>
+
+        </div>
+      
+    </div>
+  </div>
