@@ -94,7 +94,9 @@ export class RegisterComponent implements OnInit {
       .subscribe( 
         resp => {
           console.log(resp);
-          this.router.navigate(['/login']);
+          if( resp.status == 200 ){
+            this.router.navigate(['/login']);
+          }
         },
         error => {
           console.log(error);
