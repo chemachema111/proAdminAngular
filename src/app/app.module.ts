@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { APP_ROUTES } from './app-routing.module';
 
 //Modulos
-import { PagesModule } from './pages/pages.module';
+// import { PagesModule } from './pages/pages.module'; * Carga dinámica desde routes con lazyLoad
 import { PipesModule } from './pipes/pipes.module';
 
 //Temporal
@@ -13,27 +13,31 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Servicios
 import { ServiceModule } from './services/service.module';
+import { SharedModule } from './shared/shared.module';
 
 //Componentes
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { PagesComponent } from './pages/pages.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PagesComponent
   ],
   imports: [
     BrowserModule,
     APP_ROUTES,
-    PagesModule,
+    // PagesModule, * Carga dinámica desde routes con lazyLoad
     FormsModule,
     ReactiveFormsModule,
     ServiceModule,
-    PipesModule
+    PipesModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

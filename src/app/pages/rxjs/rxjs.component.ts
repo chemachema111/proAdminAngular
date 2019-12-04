@@ -16,13 +16,7 @@ export class RxjsComponent implements OnInit, OnDestroy {
     
 
     this.subscription = this.devuelveObservable()
-
-    /* TEST
-      //Esto añade un pipe con la libreria de rxjs para usar retry.
-
-    .pipe( retry(2) )
-
-    */
+    
 
     .subscribe(
       //Primer callback cuando recibimos datos de observer
